@@ -1,0 +1,93 @@
+    <div class="main-title well">
+        <h1>{{ page_data.title }}</h1>
+        {{# if page_data.user.id }}
+            <p>ברוך הבא ל{{ page_data.title }}</p>
+        {{ else }}
+                <p>יש לבצע כניסה למערכת</p>
+        {{/if}}
+    </div>
+    {{# unless page_data.user.id }}
+
+        <div class="login-box form-box-narrow">
+            {{# if page_data.errors }}
+                <div class="alert alert-danger" role="alert">
+                    <ul class="list-group nopadding">
+                        {{# each page_data.errors}}
+                            <li class="list-group-item list-group-item-danger">{{ this.msg }}</li>
+                        {{/ each}}
+                    </ul>
+                </div>
+            {{/if}}
+            <div class="well">
+                <form action="/submit" method="post">
+                    <div class="form-group">
+                        <label for="email" class="pull-right">דוא"ל:</label>
+                        <input type="text" name="email" id="email" class="form-control input-sm">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">סיסמא:</label>
+                        <input type="password" name="password" id="password" class="form-control input-sm">
+                    </div>
+                    <button type="submit" class="btn btn-default btn-group-justified input-sm">שלח</button>
+                </form>
+                <div class="plain-msg">לא רשום עדיין, לחץ <a href="/profile">כאן</a> כדי להרשם.</div>
+            </div>
+        </div>
+    {{ else }}
+        <div class="new-message-box form-box-narrow">
+            <div class="well">
+                <h2>צור תזכורת חדשה</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="phone">טלפון:</label>
+                        <input type="tel" name="phone" id="phone" class="form-control input-sm">
+                    </div>
+                    <div class="form-group">
+                        <label for="message_type">סוג ההודעה:</label>
+                        <select id="message_type" name="message_type" class="form-control input-sm">
+                            <option value="">בחר</option>
+                            {{# each page_data.reminders }}
+                                <option value="{{ this.id }}">{{ this.title }}</option>
+                            {{/ each }}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">הודעה ראשונה:</label>
+                        <input type="date" name="date" id="date" class="form-control input-sm">
+                    </div>
+                    <div class="form-group">
+                        <label for="interval">חזור כל:</label>
+                        <select id="interval" name="interval" class="form-control input-sm">
+                            <option value="">בחר</option>
+                            <option value="3">רבעון</option>
+                            <option value="6">חצי שנה</option>
+                            <option value="12">שנה</option>
+                        </select>
+                    </div>
+                    <div class="form-group additional-info">
+                        <span class="glyphicon glyphicon-chevron-down toggle-additional-info"></span>
+                        <span class="additional-info-msg">להוספת מידע נוסף שאינו חובה</span>
+                    </div>
+                    <div class="additional-info-wrap">
+                        <div class="form-group">
+                            <label for="vehicle_number">סוג הרכב:</label>
+                            <input type="text" name="vehicle_kind" id="vehicle_kind" class="form-control input-sm">
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicle_number">מספר הרכב:</label>
+                            <input type="text" name="vehicle_number" id="vehicle_number" class="form-control input-sm">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">שם:</label>
+                            <input type="text" name="name" id="name" class="form-control input-sm">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">דוא"ל:</label>
+                            <input type="text" name="email" id="email" class="form-control input-sm">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default btn-group-justified input-sm">צור תזכורת</button>
+                </form>
+            </div>
+        </div>
+    {{/unless}}

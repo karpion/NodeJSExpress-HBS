@@ -1,0 +1,100 @@
+<div class="main-title well">
+    <h1>{{ page_data.title }}</h1>
+</div>
+<div class="form-box-narrow new-message-box">
+    {{# if page_data.errors }}
+        <div class="alert alert-danger" role="alert">
+            <ul class="list-group nopadding">
+                {{# each page_data.errors}}
+                    <li class="list-group-item list-group-item-danger">{{ this.msg }}</li>
+                {{/ each}}
+            </ul>
+        </div>
+    {{/if}}
+    <div class="well">
+        <h2>{{ page_data.page_title }}</h2>
+
+        <form action="/profile/Submit" method="post" class="registration-form">
+            <input type="hidden" name="user_id" value="{{ page_data.user.id }}">
+
+            <div class="form-group">
+                <label for="name" class="pull-right">שם:</label>
+                <input type="text" name="name" id="name" value="{{ page_data.user.name }}"
+                       class="form-control input-sm req" {{{ page_data.editable }}}>
+                <span class="req_msg name">יש להזין שם</span>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="pull-right">טלפון:</label>
+                <input type="tel" name="phone" id="phone" value="{{ page_data.user.phone }}"
+                       class="form-control input-sm req" {{{ page_data.editable }}}>
+                <span class="req_msg phone">יש להזין מספר טלפון תיקני</span>
+            </div>
+            <div class="form-group">
+                <label for="email" class="pull-right">דוא"ל:</label>
+                <input type="text" name="email" id="email" value="{{ page_data.user.email }}"
+                       class="form-control input-sm req" {{{ page_data.editable }}}>
+                <span class="req_msg email">יש להזין מספר דוא"ל תיקני</span>
+            </div>
+            <div class="form-group">
+                <label for="password">סיסמא:</label>
+                <input type="password" name="password" id="password" value="{{ page_data.user.password }}"
+                       class="form-control input-sm req" {{{ page_data.editable }}}>
+                <span class="req_msg password">יש להזין סיסמה</span>
+            </div>
+            <div class="form-group">
+                <label for="repassword">חזור על הסיסמא:</label>
+                <input type="password" name="repassword" id="repassword"
+                       class="form-control input-sm req" {{{ page_data.editable }}}>
+                <span class="req_msg repassword">אין התאמה בין שדות הסיסמה</span>
+            </div>
+            <div class="form-group">
+                <label for="business_name" class="pull-right">שם העסק:</label>
+                <input type="text" name="business_name" id="business_name"
+                       value="{{ page_data.user.business_name }}"
+                       class="form-control input-sm req" {{{ page_data.editable }}}>
+                <span class="req_msg business_name">יש להזין את שם העסק</span>
+            </div>
+            <div class="form-group">
+                <label for="city" class="pull-right">כתובת (עיר):</label>
+                <input type="text" name="city" id="city" value="{{ page_data.user.business_city }}"
+                       class="form-control input-sm req" {{{ page_data.editable }}}>
+                <span class="req_msg city">יש להזין עיר</span>
+                <div class="city-list-container">
+                    <ul class="city-list list-group">
+                        {{# each page_data.cities }}
+                            <li class="list-group-item"> {{ this }} </li>
+                        {{/ each }}
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="street" class="pull-right">כתובת (רחוב):</label>
+                <input type="text" name="street" id="street" value="{{ page_data.user.business_street }}"
+                       class="form-control input-sm req" {{{ page_data.editable }}}>
+                <span class="req_msg street">יש להזין רחוב</span>
+            </div>
+            <div class="form-group">
+                <label for="house_number" class="pull-right">כתובת (מספר הבית):</label>
+                <input type="text" name="house_number" id="house_number"
+                       value="{{ page_data.user.business_house_num }}" class="form-control input-sm req"
+                       style="width: 48px; clear: right; text-align: center;" {{{ page_data.editable }}}>
+                <span class="req_msg house_number">יש להזין מספר בית</span>
+            </div>
+            {{# if page_data.user.id }}
+                <button type="button" class="btn btn-default btn-group-justified input-sm btn-edit"
+                        style="margin-top: 15px;">ערוך
+                </button>
+            {{ else }}
+                <div class="clear"></div>
+                <div class="form-group">
+                    <input type="checkbox" name="agree" id="agree" value="1" class="req">
+                    <label class="small">קראתי ואני מסכים ל<a href="#">תנאי השימוש.</a></label>
+                    <span class="req_msg agree">יש לאשר את תנאי השימוש</span>
+                </div>
+            {{/if}}
+            <button type="submit" class="btn btn-default btn-group-justified input-sm"
+                    style="margin-top: 15px;" {{{ page_data.editable }}}>שלח
+            </button>
+        </form>
+    </div>
+</div>

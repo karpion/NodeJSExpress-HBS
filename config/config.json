@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "tire_man",
+    "host": "dev",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "",
+    "database": "tire_man",
+    "host": "dev",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "",
+    "database": "tire_man",
+    "host": "dev",
+    "dialect": "mysql"
+  }
+}

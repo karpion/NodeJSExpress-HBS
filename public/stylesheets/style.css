@@ -1,0 +1,150 @@
+body {
+  background-color: #222222;
+  color: #222;
+  direction: rtl;
+  padding-top: 50px;
+  margin: 0;
+  font: 14px Thahoma, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+h1, h2, h3{
+  font-weight: 700;
+}
+.nopadding{
+  padding: 0 !important;
+}
+.clear{
+  float: none;
+  clear: both;
+}
+.main-title.well{
+  margin: 10px auto 20px;
+  text-align: center;
+}
+.main-title.well h1{
+  margin-top: 10px;
+  text-align: center;
+}
+.form-box-narrow{
+  width: 250px;
+  margin: 0 auto;
+}
+.form-box-narrow h2{
+  font-size: 28px;
+  margin-top: 0px;
+}
+.form-box-narrow label {
+  color: #222222;
+  line-height: 26px;
+  width: 50px;
+  float: right;
+}
+.new-message-box.form-box-narrow label {
+  float: none;
+  width: auto;
+  margin-bottom: 0;
+}
+.form-group{
+  margin-bottom: 10px;
+}
+.new-message-box .form-group{
+  margin-bottom: 8px;
+}
+.new-message-box .form-group:last-child{
+  margin-bottom: 15px;
+}
+.new-message-box h2{
+  text-align: center;
+}
+.login-box .form-group input{
+  width: 160px;
+}
+.form-box-narrow button.btn{
+   line-height: 1;
+ }
+.login-box .plain-msg {
+  text-align: center;
+  margin-top: 10px;
+}
+.form-group.additional-info {
+  margin-top: 12px;
+  margin-bottom: 15px;
+}
+.form-group.additional-info:before, .form-group.additional-info:after{display: table; content: '';}
+.form-group.additional-info:after{float: none; clear: both;}
+.toggle-additional-info{
+  cursor: pointer;
+  float: right;
+}
+span.additional-info-msg {
+  cursor: pointer;
+  font-size: 12px;
+  display: block;
+  margin-right: 18px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+.additional-info-wrap{
+  display: none;
+}
+.city-list-container {
+  display: none;
+  max-height: 186px;
+  overflow: auto;
+  z-index: 1;
+  position: absolute;
+  width: 210px;
+}
+.city-list{
+  padding-right: 0;
+}
+.city-list li{
+  cursor: pointer;
+}
+.filtered-out{
+  display: none;
+}
+input#agree {
+  position: relative;
+  top: 3px;
+  margin-left: 4px;
+}
+.reminder-content{
+  display: none;
+  margin-bottom: 0px;
+  margin-top: 15px;
+}
+.not_valid{border: 1px solid #f00;}
+.req_msg{
+  display: none;
+  color: #f00;
+  font-size: 12px;
+  float: left;
+}
+#addReminderTemplateModal .close{
+  float: left;
+}
+#addReminderTemplateModal .modal-header .close {
+  margin-top: -38px;
+}
+#addReminderTemplateModal .modal-footer{
+  padding: 15px 0;
+  text-align: left;
+}
+#addReminderTemplateModal .btn-group-justified{
+  direction: ltr;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+@media (min-width: 768px){
+  .navbar-nav > li {
+    float: right;
+  }
+}

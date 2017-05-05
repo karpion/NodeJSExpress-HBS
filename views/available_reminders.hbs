@@ -1,0 +1,77 @@
+<div class="main-title well">
+    <h1>{{ page_data.title }}</h1>
+</div>
+<div class="form-box-narrow new-message-box">
+    {{# if page_data.errors }}
+        <div class="alert alert-danger" role="alert">
+            <ul class="list-group nopadding">
+                {{# each page_data.errors}}
+                    <li class="list-group-item list-group-item-danger">{{ this.msg }}</li>
+                {{/ each}}
+            </ul>
+        </div>
+    {{/if}}
+    <div class="well reminders">
+        <h2>{{ page_data.page_title }}</h2>
+        <div class="form-group">
+            <label for="reminder_selector">סוג ההודעה:</label>
+            <select id="reminder_selector" class="form-control input-sm reminder-selector">
+                <option value="">בחר</option>
+                {{# each page_data.reminders }}
+                    <option value="{{ this.id }}">{{ this.title }}</option>
+                {{/ each }}
+            </select>
+        </div>
+        {{# if page_data.user.is_admin }}
+            <div class="form-group">
+                <a class="create-new-reminder-template btn btn-default btn-group-justified" data-toggle="modal" data-target="#addReminderTemplateModal">צור חדש</a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="addReminderTemplateModal" tabindex="-1" role="dialog" aria-labelledby="addReminderTemplateModalTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="addReminderTemplateModalTitle">תבנית תזכורת חדשה</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/available-reminders/AddTemplate">
+                                <div class="form-group">
+                                    <label for="name" class="pull-right">כותרת:</label>
+                                    <input type="text" name="name" id="name" class="form-control input-sm req">
+                                    <span class="req_msg name">יש להזין שם</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="content" class="pull-right">תוכן התזכורת:</label>
+                                    <div class="btn-group btn-group-justified scInserts">
+                                        <a href="javascript: " class="btn btn-primary" data-action="addLocation">מיקום</a>
+                                        <a href="javascript: " class="btn btn-primary" data-action="addNumber" style="direction: rtl;">הוסף מס'</a>
+                                        <a href="javascript: " class="btn btn-primary" data-action="addType">הוסף סוג</a>
+                                        <a href="javascript: " class="btn btn-primary" data-action="addName">הוסף שם</a>
+                                    </div>
+                                    <textarea name="content" id="content" class="form-control input-sm req"></textarea>
+                                    <span class="req_msg content">יש להזין תוכן</span>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">בטל</button>
+                                    <button type="button" class="btn btn-primary">שמור שינויים</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- .Modal -->
+
+        {{/if}}
+        {{# each page_data.reminders }}
+            <div class="reminder-content panel panel-body panel-default" data-id="{{ this.id }}">
+                {{ this.content }}
+            </div>
+        {{/ each }}
+    </div>
+</div>
