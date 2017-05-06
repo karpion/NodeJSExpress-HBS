@@ -33,7 +33,7 @@ h1, h2, h3{
 }
 .form-box-narrow h2{
   font-size: 28px;
-  margin-top: 0px;
+  margin-top: 0;
 }
 .form-box-narrow label {
   color: #222222;
@@ -113,7 +113,7 @@ input#agree {
 }
 .reminder-content{
   display: none;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   margin-top: 15px;
 }
 .not_valid{border: 1px solid #f00;}
@@ -137,8 +137,6 @@ input#agree {
   direction: ltr;
   margin-bottom: 10px;
 }
-
-
 
 
 
